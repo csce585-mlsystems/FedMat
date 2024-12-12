@@ -30,7 +30,7 @@ Please install the following packages if not already installed. We show how to i
 Use the following commands to install the necessary packages:
 ```bash
 git clone https://github.com/csce585-mlsystems/FedMat.git
-cd FedMat/FedMat
+cd FedMat
 pip install -r requirements.txt
 ```
 <a name="key"></a>
@@ -56,16 +56,12 @@ Materials datasets are large in memory. We provided links from where you can dow
 
 To access the datasets, go to the following folder and access the instructions:
 ```bash
-cd FedMat/data/datasets/
+cd data/datasets/
 ```
 
 <a name="usage"></a>
 ## How to Run
-The default configuration for training federated DeeperGATGNN, federated SchNet, and federated MPNN are mentioned in the ```config.yml``` file. First go to the actual code folder using:
-```bash
-cd FedMat
-```
-Use the following command to run the federated training of a specific model (DeeperGATGNN shown here):
+The default configuration for training federated DeeperGATGNN, federated SchNet, and federated MPNN are mentioned in the ```config.yml``` file. Use the following command to run the federated training of a specific model (DeeperGATGNN shown here):
 ```bash
 python main.py -dataset mat -model deepergatgnn -fedmid avg -part_alpha 0.1 -numClient 4
 ```
@@ -74,7 +70,17 @@ This command will **train the model in a federated way, evaluate the model on te
 
 Make sure to unzip the data in FedMat/data/datasets/test_data/ to run it. This command will run for the already downloaded test data. You may download other dataset from the instruction provided in the dataset folders to test the models on them. The command line options for the dataset are mat, band, 2d, alloy, formation, pt, dielectric, gvrh, and perovskites. The command line options for the model are deepergatgnn, schnet, and mpnn.
 
-<a name="vide"></a>
+The command to run the code for the SchNet model for the band-gap dataset with 8 clients:
+```bash
+python main.py -dataset band -model schnet -fedmid avg -part_alpha 0.1 -numClient 8
+```
+
+The command to run the code for the MPNN model for the perovskites (OOD) dataset with 5 clients:
+```bash
+python main.py -dataset perovskites -model mpnn -fedmid avg -part_alpha 0.1 -numClient 5
+```
+
+<a name="video"></a>
 ## Project Presentation Video
 The project presentation video can be found by clicking [here](https://youtu.be/j_hZIPUTBZ0?si=u3-4A457fwbogc42).
 
